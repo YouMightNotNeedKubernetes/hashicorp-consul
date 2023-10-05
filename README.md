@@ -25,3 +25,21 @@ Effectively mitigating your risk is more nuanced than just increasing the fault 
 most production use cases, we recommend using either 3 or 5 voting servers, yielding a server-level fault tolerance of 1 or 2 respectively.
 
 Even though it would improve fault tolerance, adding voting servers beyond 5 is not recommended because it decreases Consul's performance— it requires Consul to involve more servers in every state change or consistent read.
+
+If you want to change the number of replicas, you can do so by changing by set the `CONSUL_REPLICAS` environment value to your desire value, e.g.: `CONSUL_REPLICAS=5`.
+
+## Deployment
+
+To deploy the stack, run the following command:
+
+```sh
+$ make deploy
+```
+
+## Destroy
+
+To destroy the stack, run the following command:
+
+```sh
+$ make destroy
+```
