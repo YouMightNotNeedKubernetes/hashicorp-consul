@@ -21,12 +21,6 @@ The Consul cluster is deployed as a Docker Swarm service. Its leverages the `ing
 ![Consul Architecture](https://content.hashicorp.com/api/assets?product=consul&version=refs%2Fheads%2Frelease%2F1.16.x&asset=website%2Fpublic%2Fimg%2Fconsul-arch%2Fconsul-arch-overview-control-plane.svg&width=960&height=540)
 > See https://developer.hashicorp.com/consul/docs/architecture for more information
 
-If you wish to join Consul from another Docker Swarm Cluster, please consider using [Federate multiple datacenters with WAN gossip
-](https://developer.hashicorp.com/consul/tutorials/networking/federation-gossip-wan).
-
-![Traditional WAN Federation](https://content.hashicorp.com/api/assets?product=consul&version=refs%2Fheads%2Frelease%2F1.16.x&asset=website%2Fpublic%2Fimg%2Ftraditional-wan-federation.png&width=3571&height=1985)
-> See https://developer.hashicorp.com/consul/tutorials/networking/federation-gossip-wan for more information
-
 ## Fault Tolerance
 Fault tolerance is the ability of a system to continue operating without interruption despite the failure of one or more components. The most basic production deployment of Consul has 3 server agents and can lose a single server without interruption.
 
