@@ -6,7 +6,7 @@ x-deploy-policy: &x-deploy-policy
   update_config:
     parallelism: 1
     delay: 30s
-    order: stop-first
+    order: start-first
     failure_action: rollback
   rollback_config:
     parallelism: 1
