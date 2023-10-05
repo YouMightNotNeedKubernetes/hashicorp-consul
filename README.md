@@ -3,6 +3,8 @@ A high-availability Hashicorp Consul deployment for Docker Swarm
 
 ![Consul Architecture](https://github.com/YouMightNotNeedKubernetes/hashicorp-consul/assets/4363857/8219e0ac-5bbf-4cb9-9649-b01fbfe824b8)
 
+> See https://developer.hashicorp.com/consul/docs/architecture for more information
+
 ## Fault Tolerance
 Fault tolerance is the ability of a system to continue operating without interruption despite the failure of one or more components. The most basic production deployment of Consul has 3 server agents and can lose a single server without interruption.
 
