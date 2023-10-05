@@ -25,10 +25,10 @@ x-default-logging: &x-default-logging
 
 configs:
   00-default.hcl:
-    name: "consul_default-v${REVISION}.hcl"
+    name: "consul_default-v${REVISION:-1.0}.hcl"
     file: configs/00-default.hcl
   config.hcl:
-    name: consul_config-v${REVISION}.hcl
+    name: consul_config-v${REVISION:-1.0}.hcl
     file: configs/config.hcl
 
 services:
