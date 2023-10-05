@@ -1,7 +1,7 @@
 # hashicorp-consul
 A high-availability Hashicorp Consul deployment for Docker Swarm
 
-![Consul Architecture](https://github.com/YouMightNotNeedKubernetes/hashicorp-consul/assets/4363857/8219e0ac-5bbf-4cb9-9649-b01fbfe824b8)
+![Consul Architecture](https://content.hashicorp.com/api/assets?product=consul&version=refs%2Fheads%2Frelease%2F1.16.x&asset=website%2Fpublic%2Fimg%2Fconsul-arch%2Fconsul-arch-overview-control-plane.svg&width=960&height=540)
 
 > See https://developer.hashicorp.com/consul/docs/architecture for more information
 
