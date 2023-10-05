@@ -1,0 +1,71 @@
+x-deploy-policy: &x-deploy-policy
+  replicas: ${CONSUL_REPLICAS:-3} # <- Plz ignore this error
+  placement:
+    constraints:
+      - node.role == manager
+  update_config:
+    parallelism: 1
+    delay: 30s
+    order: stop-first
+    failure_action: rollback
+  rollback_config:
+    parallelism: 1
+    delay: 30s
+  restart_policy:
+    condition: on-failure
+    delay: 30s
+    max_attempts: 3
+    window: 120s
+
+x-default-logging: &x-default-logging
+  options:
+    max-size: "12m"
+    max-file: "5"
+  driver: json-file
+
+configs:
+  00-default.hcl:
+    name: "consul_default-v${REVISION}.hcl"
+    file: configs/00-default.hcl
+  config.hcl:
+    name: consul_config-v${REVISION}.hcl
+    file: configs/config.hcl
+
+services:
+  server:
+    image: hashicorp/consul:${CONSUL_VERSION:-latest}
+    command: agent
+    hostname: "consul-{{.Task.Slot}}-{{.Task.ID}}"
+    ports:
+      # The HTTP API (TCP Only)
+      - 8500:8500 
+      # The DNS server (TCP and UDP)
+      - 8600:8600/tcp
+      - 8600:8600/udp
+      # The Serf LAN port (TCP and UDP)
+      - 8301:8301/tcp
+      - 8301:8301/udp
+      # The Serf WAN port (TCP and UDP)
+      - 8302:8302/tcp
+      - 8302:8302/udp
+      # Server RPC address (TCP Only)
+      - 8300:8300 
+      # The HTTPS API (TCP Only) (Disabled by default)
+      # - 8501:8501
+      # The gRPC API (Disabled by default)
+      # - 8502:8502
+      # The gRPC API with TLS connections (Disabled by default)
+      # - 8503:8503
+    configs:
+      - source: 00-default.hcl
+        target: /consul/config/00-default.hcl
+      - source: config.hcl
+        target: /consul/config/config.hcl
+    volumes:
+      - consul:/consul/data
+    deploy: *x-deploy-policy
+    logging: *x-default-logging
+
+volumes:
+  consul:
+    name: consul-{{.Task.Slot}}

@@ -1,0 +1,6 @@
+.vscode/
+.env
+.env.*
+!.env.default
+
+configs/config.hcl
