@@ -36,6 +36,8 @@ services:
     image: hashicorp/consul:${CONSUL_VERSION:-latest}
     command: agent
     hostname: "consul-{{.Task.Slot}}-{{.Task.ID}}"
+    networks:
+      - consul_area_lan
     ports:
       # The HTTP API (TCP Only)
       - 8500:8500 
@@ -69,3 +71,8 @@ services:
 volumes:
   consul:
     name: consul-{{.Task.Slot}}
+
+networks:
+  consul_area_lan:
+    name: consul_area_lan
+    external: true

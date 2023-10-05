@@ -11,9 +11,10 @@ disable_host_node_id = true
 // Addresses & Ports
 // See: https://developer.hashicorp.com/consul/docs/agent/config/config-files#advertise-address-parameters
 // ==============================================
+// The "eth0" interface is "consul_area_lan" network
+advertise_addr  = "{{ GetInterfaceIP \"eth0\" }}"
+bind_addr       = "0.0.0.0" // or "{{ GetInterfaceIP \"eth0\" }}"
 client_addr     = "0.0.0.0"
-bind_addr       = "0.0.0.0" // or "{{ GetInterfaceIP \"eth1\" }}"
-advertise_addr  = "{{ GetInterfaceIP \"eth1\" }}"
 
 // ==============================================
 // Server
