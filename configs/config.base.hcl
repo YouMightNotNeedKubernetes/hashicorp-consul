@@ -6,7 +6,6 @@ ui_config = {
 // ==============================================
 // Datacenter
 // ==============================================
-primary_datacenter = "dc1"
 datacenter = "dc1"
 domain = "consul"
 server_name = "server.dc1.consul"
