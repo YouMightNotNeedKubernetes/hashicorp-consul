@@ -42,14 +42,14 @@ services:
       # The DNS server (TCP and UDP)
       - 8600:8600/tcp
       - 8600:8600/udp
+      # Server RPC address (TCP Only)
+      - 8300:8300
       # The Serf LAN port (TCP and UDP)
       - 8301:8301/tcp
       - 8301:8301/udp
       # The Serf WAN port (TCP and UDP)
       - 8302:8302/tcp
       - 8302:8302/udp
-      # Server RPC address (TCP Only)
-      - 8300:8300
       # The HTTPS API (TCP Only) (Disabled by default)
       # - 8501:8501
       # The gRPC API (Disabled by default)
