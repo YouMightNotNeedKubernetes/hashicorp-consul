@@ -11,7 +11,7 @@ it:
 configs:
 	test -f configs/config.hcl || cp configs/config.base.hcl configs/config.hcl
 
-deploy:
+deploy: configs
 	docker stack deploy -c docker-compose.yml ${docker_stack_name}
 
 destroy:
