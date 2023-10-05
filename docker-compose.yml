@@ -49,7 +49,7 @@ services:
       - 8302:8302/tcp
       - 8302:8302/udp
       # Server RPC address (TCP Only)
-      - 8300:8300 
+      - 8300:8300
       # The HTTPS API (TCP Only) (Disabled by default)
       # - 8501:8501
       # The gRPC API (Disabled by default)

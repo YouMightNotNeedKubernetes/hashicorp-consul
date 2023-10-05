@@ -11,9 +11,9 @@ disable_host_node_id = true
 // Addresses & Ports
 // See: https://developer.hashicorp.com/consul/docs/agent/config/config-files#advertise-address-parameters
 // ==============================================
-client_addr     = "0.0.0.0"
 bind_addr       = "0.0.0.0" // or "{{ GetInterfaceIP \"eth0\" }}"
 advertise_addr  = "{{ GetInterfaceIP \"eth0\" }}"
+client_addr     = "{{ GetPrivateInterfaces | exclude \"type\" \"ipv6\" | join \"address\" \" \" }}"
 
 // ==============================================
 // Server
