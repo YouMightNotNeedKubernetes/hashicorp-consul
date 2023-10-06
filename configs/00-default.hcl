@@ -44,3 +44,11 @@ autopilot {
     max_trailing_logs = 250
     cleanup_dead_servers = true
 }
+
+// See: https://developer.hashicorp.com/consul/docs/agent/config/config-files#limits
+limits {
+    // Configures the limit for how long a client is allowed to read from an RPC connection.
+    // This is used to set an upper bound for calls to eventually terminate so that RPC connections are not held indefinitely.
+    // Blocking queries can override this timeout. Default is 60s.
+    rpc_client_timeout = "120s"
+}
