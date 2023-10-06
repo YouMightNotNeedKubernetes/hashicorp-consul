@@ -1,6 +1,7 @@
 x-deploy-policy: &x-deploy-policy
   replicas: ${CONSUL_REPLICAS:-3} # <- Plz ignore this error
   placement:
+    max_replicas_per_node: 1
     constraints:
       - node.role == manager
   update_config:
