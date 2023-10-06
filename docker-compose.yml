@@ -4,6 +4,8 @@ x-deploy-policy: &x-deploy-policy
     max_replicas_per_node: 1
     constraints:
       - node.role == manager
+    preferences:
+      - spread: node.labels.consul
   update_config:
     parallelism: 1
     delay: 30s
