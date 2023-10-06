@@ -5,7 +5,6 @@
 // ==============================================
 log_level = "INFO"
 disable_update_check = true
-disable_host_node_id = true
 
 // ==============================================
 // Addresses & Ports
