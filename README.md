@@ -21,6 +21,32 @@ The Consul cluster is deployed as a Docker Swarm service. Its leverages the `ing
 ![Consul Architecture](https://content.hashicorp.com/api/assets?product=consul&version=refs%2Fheads%2Frelease%2F1.16.x&asset=website%2Fpublic%2Fimg%2Fconsul-arch%2Fconsul-arch-overview-control-plane.svg&width=960&height=540)
 > See https://developer.hashicorp.com/consul/docs/architecture for more information
 
+### Server placement
+
+A `node.labels.consul` label is used to determine which nodes the Consul server can be deployed on.
+
+The deployment uses both placement **constraints** & **preferences** to ensure that the servers are spread evenly across the Docker Swarm manager nodes and only **ALLOW** one replica per node.
+
+![placement_prefs](https://docs.docker.com/engine/swarm/images/placement_prefs.png)
+
+> See https://docs.docker.com/engine/swarm/services/#control-service-placement for more information.
+
+#### List the nodes
+On the manager node, run the following command to list the nodes in the cluster.
+
+```sh
+docker node ls
+```
+
+#### Add the label to the node
+On the manager node, run the following command to add the label to the node.
+
+Repeat this step for each node you want to deploy Consul server to.
+
+```sh
+docker node update --label-add consul=true <manager-node-name>
+```
+
 ## Fault Tolerance
 Fault tolerance is the ability of a system to continue operating without interruption despite the failure of one or more components. The most basic production deployment of Consul has 3 server agents and can lose a single server without interruption.
 
