@@ -28,6 +28,15 @@ retry_interval = "30s" // Defaults to 30s
 rejoin_after_leave = false
 leave_on_terminate = true
 
+// It is recommended to configure the server performance parameters back to Consul's original high-performance settings.
+// This will let Consul servers detect a failed leader and complete leader elections much more quickly than the default configuration
+// which extends key Raft timeouts by a factor of 5, so it can be quite slow during these events.
+// 
+// See https://developer.hashicorp.com/consul/docs/install/performance#production
+performance {
+    raft_multiplier = 1
+}
+
 // See: https://developer.hashicorp.com/consul/docs/agent/config/config-files#autopilot
 autopilot {
     server_stabilization_time = "10s"
