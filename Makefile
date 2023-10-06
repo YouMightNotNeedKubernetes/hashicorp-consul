@@ -9,7 +9,7 @@ it:
 
 .PHONY: configs
 configs:
-	test -f configs/config.hcl || cp configs/config.base.hcl configs/config.hcl
+	test -f configs/config.hcl || cp configs/config.default.hcl configs/config.hcl
 
 deploy: configs
 	docker stack deploy -c docker-compose.yml ${docker_stack_name}
