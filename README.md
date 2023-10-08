@@ -11,7 +11,7 @@ You will need to create swarm-scoped overlay network called `consul_area_lan` fo
 docker network create --scope=swarm --driver=overlay --attachable consul_area_lan
 ```
 
-We provided a base configuration file for Prometheus. You can find it in the `config` folder.  
+We provided a base configuration file for Consul. You can find it in the `config` folder.  
 Please make a copy as `configs/config.hcl`, and edit it to your needs.
 
 ## How it works
