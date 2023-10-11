@@ -5,7 +5,7 @@ A high-availability Hashicorp Consul deployment for Docker Swarm
 
 You should only have Consul deployed once per Docker Swarm Cluster.
 
-You will need to create swarm-scoped overlay network called `consul_area_lan` for Consul to communicate if you haven't already.
+You will need to create swarm-scoped overlay network called `consul_area_lan` for services to communicate if you haven't already.
 
 ```sh
 docker network create --scope=swarm --driver=overlay --attachable consul_area_lan
@@ -23,7 +23,7 @@ The Consul cluster is deployed as a Docker Swarm service. Its leverages the `ing
 
 ### Server placement
 
-A `node.labels.consul` label is used to determine which nodes the Consul server can be deployed on.
+A `node.labels.consul` label is used to determine which nodes the service can be deployed on.
 
 The deployment uses both placement **constraints** & **preferences** to ensure that the servers are spread evenly across the Docker Swarm manager nodes and only **ALLOW** one replica per node.
 
@@ -41,10 +41,13 @@ docker node ls
 #### Add the label to the node
 On the manager node, run the following command to add the label to the node.
 
-Repeat this step for each node you want to deploy Consul server to.
+Repeat this step for each node you want to deploy the service to. Make sure that the number of node updated matches the number of replicas you want to deploy.
 
+**Example deploy service with 3 replicas**:
 ```sh
-docker node update --label-add consul=true <manager-node-name>
+docker node update --label-add consul=true <node-1>
+docker node update --label-add consul=true <node-2>
+docker node update --label-add consul=true <node-3>
 ```
 
 ## Fault Tolerance
