@@ -1,5 +1,9 @@
 # hashicorp-consul
-A high-availability Hashicorp Consul deployment for Docker Swarm
+A high-availability Hashicorp Consul deployment for Docker Swarm.
+
+Consul is a multi-networking tool that offers a fully-featured service mesh solution. It solves the networking and security challenges of operating microservices and cloud infrastructure in multi-cloud and hybrid cloud environments. This documentation describes Consul concepts, the problems it solves, and contains quick-start tutorials for using Consul.
+
+https://www.consul.io/
 
 ## Getting Started
 
@@ -16,7 +20,7 @@ Please make a copy as `configs/config.hcl`, and edit it to your needs.
 
 ## How it works
 
-The Consul cluster is deployed as a Docker Swarm service. Its leverages the `ingress` network for forming the cluster.
+The Consul cluster is deployed as a Docker Swarm service. Its leverages the `consul_area_lan` network for forming the cluster.
 
 ![Consul Architecture](https://content.hashicorp.com/api/assets?product=consul&version=refs%2Fheads%2Frelease%2F1.16.x&asset=website%2Fpublic%2Fimg%2Fconsul-arch%2Fconsul-arch-overview-control-plane.svg&width=960&height=540)
 > See https://developer.hashicorp.com/consul/docs/architecture for more information
