@@ -73,6 +73,7 @@ services:
 
 volumes:
   consul:
+    name: consul
     external: true
 
 networks:
