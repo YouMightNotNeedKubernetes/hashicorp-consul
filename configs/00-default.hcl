@@ -3,7 +3,7 @@
 // ==============================================
 // Commons settings for Consul
 // ==============================================
-log_level = "INFO"
+log_level = "DEBUG"
 disable_update_check = true
 
 // ==============================================
@@ -22,7 +22,7 @@ client_addr     = "0.0.0.0"
 server = true
 bootstrap_expect = 3
 retry_join = ["server", "server", "server"]
-retry_max = 0 // By default, this is set to 0 which is interpreted as infinite retries
+retry_max = 30 // By default, this is set to 0 which is interpreted as infinite retries
 retry_interval = "30s" // Defaults to 30s
 rejoin_after_leave = false
 leave_on_terminate = true
