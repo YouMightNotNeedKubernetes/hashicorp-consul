@@ -12,7 +12,7 @@ You should only have Consul deployed once per Docker Swarm Cluster.
 You will need to create swarm-scoped overlay network called `consul_area_lan` for services to communicate if you haven't already.
 
 ```sh
-docker network create --scope=swarm --driver=overlay --attachable consul_area_lan
+$ docker network create --scope swarm --driver overlay --attachable consul_area_lan
 ```
 
 We provided a base configuration file for Consul. You can find it in the `config` folder.  
