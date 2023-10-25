@@ -4,4 +4,4 @@
 !.env.default
 
 configs/config.hcl
-docker-compose.override.yml
+docker-compose.*.yml
